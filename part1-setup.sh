@@ -5,6 +5,24 @@ if test -f $LFS/LfsScripts/pkg-pass/setup-pass; then
 fi
 source ./config.config
 export LFS=$LFS_DIR
+file = $LFS/*
+if ! [[ "$file" == /* ]] ; then
+    path=.
+fi
+dirname "$file" | tr '/' $'\n' | while read part ; do
+    path="$path/$part"
+    # Check for execute permissions
+    if ! [[ -x "$path" ]] ; then
+        echo "'$path' is blocking access."
+        exit 1
+    fi
+done
+if ! [[ -r "$file" ]] ; then
+    echo "'$file' is not readable."
+    exit 1
+fi
+
+
 mkdir -v $LFS/sources
 chmod -v +rwx $LFS/sources
 wget https://www.linuxfromscratch.org/lfs/downloads/stable/wget-list-sysv
