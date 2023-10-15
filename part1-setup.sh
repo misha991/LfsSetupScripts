@@ -6,10 +6,7 @@ fi
 source ./config.config
 export LFS=$LFS_DIR
 user= ${SUDO_USER:-$USER}
-perms = ls -ld $LFS
-if [[ ! "$perms" == *"$user"* ]]; then
-  return 0
-fi
+
 mkdir -v $LFS/sources
 chmod -v +rwx $LFS/sources
 wget https://www.linuxfromscratch.org/lfs/downloads/stable/wget-list-sysv
