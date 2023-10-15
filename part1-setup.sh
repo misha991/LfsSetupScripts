@@ -6,7 +6,7 @@ fi
 source ./config.config
 export LFS=$LFS_DIR
 user= ${SUDO_USER:-$USER}
-perms = ${ls -ld $LFS}
+perms = ls -ld $LFS
 if [[ ! "$perms" == *"$user"* ]]; then
   return 0
 fi
