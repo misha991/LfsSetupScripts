@@ -10,6 +10,7 @@ chmod -v a+wt $LFS/sources
 wget https://www.linuxfromscratch.org/lfs/downloads/stable/wget-list-sysv
 wget --input-file=wget-list-sysv --continue --directory-prefix=$LFS/sources
 chown root:root $LFS/sources/*
+cd $LFS/sources
 wget https://www.linuxfromscratch.org/lfs/downloads/stable/md5sums
 pushd $LFS/sources
  md5sum -c md5sums
@@ -44,3 +45,4 @@ echo "export LFS LC_ALL LFS_TGT PATH CONFIG_SITE" >>  ~/.bashrc
 source ~/.bash_profile
 mkdir $LFS/pkg_pass
 echo "Finished!"
+cd $0

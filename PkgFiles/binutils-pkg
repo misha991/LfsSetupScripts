@@ -6,7 +6,7 @@ fi
 cd $LFS/sources
 tar -xf binutils-2.41.tar.xz
 if [ $? -eq 0 ]; then
-    echo "succeeded"
+    echo "succesed"
 else
     echo "failed to extract"
     exit 1
@@ -21,23 +21,24 @@ cd build
  --enable-gprofng=no \
  --disable-werror
 if [ $? -eq 0 ]; then
-    echo "succeeded"
+    echo "succesed"
 else
     echo "failed"
     exit 1
 fi
-make
+make $MAKE_FLAGS
  if [ $? -eq 0 ]; then
-    echo "succeeded"
+    echo "succesed"
 else
     echo "failed"
     exit 1
 fi
 make install
  if [ $? -eq 0 ]; then
-    echo "succeeded"
+    echo "succesed"
 else
     echo "failed"
     exit 1
 fi
 touch $LFS/pkg_pass/binutils-pass1
+cd $0
