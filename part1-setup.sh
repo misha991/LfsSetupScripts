@@ -8,6 +8,7 @@ export LFS=$LFS_DIR
 user= ${SUDO_USER:-$USER}
 sudo -u $user test -w $LFS/ || {
    echo "cannot write the directory $LFS"
+   return 0
 }
 mkdir -v $LFS/sources
 chmod -v +rwx $LFS/sources
