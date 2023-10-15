@@ -14,6 +14,7 @@ wget https://www.linuxfromscratch.org/lfs/downloads/stable/md5sums
 pushd $LFS/sources
  md5sum -c md5sums
 popd
+touch wget-pass
 mkdir -pv $LFS/{etc,var} $LFS/usr/{bin,lib,sbin}
 for i in bin lib sbin; do
  ln -sv usr/$i $LFS/$i
@@ -24,9 +25,9 @@ esac
 mkdir -pv $LFS/tools
 groupadd lfs
 useradd -s /bin/bash -g lfs -m -k /dev/null lfs
-echo lfs | passwd lfs --stdin
 passwd -d lfs
 chown -v lfs $LFS/{usr{,/*},lib,var,etc,bin,sbin,tools}
+chown -v lfs ./*
 case $(uname -m) in
  x86_64) chown -v lfs $LFS/lib64 ;;
 esac
