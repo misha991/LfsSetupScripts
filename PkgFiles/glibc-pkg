@@ -44,26 +44,26 @@ fi
     echo "succesed"
 else
     echo "failed"
-    exit 1
+    exit
 fi
  make $MAKE_FLAGS
   if [ $? -eq 0 ]; then
     echo "succesed"
 else
     echo "failed"
-    exit 1
+    exit
 fi
 make DESTDIR=$LFS install
   if [ $? -eq 0 ]; then
     echo "succesed"
 else
     echo "failed"
-    exit 1
+    exit
 fi
 sed '/RTLDLIST=/s@/usr@@g' -i $LFS/usr/bin/ldd
  if [ $? -eq 0 ]; then
     echo "succesed"
 else
     echo "failed"
-    exit 1
+    exit
 fi

@@ -1,7 +1,7 @@
 echo "installing binutils-pass1"
 if test -f $LFS/pkg_pass/binutils-pass1; then
   echo "Binutils is installed."
-  exit 0
+  exit
 fi
 cd $LFS/sources
 tar -xf binutils-2.41.tar.xz
@@ -9,7 +9,7 @@ if [ $? -eq 0 ]; then
     echo "succesed"
 else
     echo "failed to extract"
-    exit 1
+    exit
 fi
 cd binutils-2.41
 mkdir -v build
@@ -24,20 +24,20 @@ if [ $? -eq 0 ]; then
     echo "succesed"
 else
     echo "failed"
-    exit 1
+    exit
 fi
 make $MAKE_FLAGS
  if [ $? -eq 0 ]; then
     echo "succesed"
 else
     echo "failed"
-    exit 1
+    exit
 fi
 make install
  if [ $? -eq 0 ]; then
     echo "succesed"
 else
     echo "failed"
-    exit 1
+    exit
 fi
 touch $LFS/pkg_pass/binutils-pass1

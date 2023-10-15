@@ -1,7 +1,7 @@
 echo "installing linux-headers"
 if test -f $LFS/pkg_pass/linux-headers; then
   echo "Linux headers is installed."
-  exit 0
+  exit
 fi
 cd $LFS/sources
 tar -xf linux-6.4.12.tar.xz
@@ -9,7 +9,7 @@ if [ $? -eq 0 ]; then
     echo "succesed"
 else
     echo "failed to extract"
-    exit 1
+    exit
 fi
 cd linux-6.4.12.tar.xz
 make mrproper $MAKE_FLAGS
@@ -17,14 +17,14 @@ make mrproper $MAKE_FLAGS
     echo "succesed"
 else
     echo "failed"
-    exit 1
+    exit
 fi
 make headers $MAKE_FLAGS
  if [ $? -eq 0 ]; then
     echo "succesed"
 else
     echo "failed"
-    exit 1
+    exit
 fi
 find usr/include -type f ! -name '*.h' -delete
 cp -rv usr/include $LFS/usr
@@ -32,6 +32,6 @@ if [ $? -eq 0 ]; then
     echo "succesed"
 else
     echo "failed"
-    exit 1
+    exit
 fi
 touch $LFS/pkg_pass/linux-headers

@@ -86,21 +86,21 @@ if [ $? -eq 0 ]; then
     echo "succesed"
 else
     echo "failed"
-    exit 1
+    exit
 fi
  make $MAKE_FLAGS
  if [ $? -eq 0 ]; then
     echo "succesed"
 else
     echo "failed"
-    exit 1
+    exit
 fi
  make install
 if [ $? -eq 0 ]; then
     echo "succesed"
 else
     echo "failed"
-    exit 1
+    exit
 fi
 cd ../
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
@@ -109,6 +109,6 @@ cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
     echo "succesed"
 else
     echo "failed"
-    exit 1
+    exit
 fi
 touch $LFS/pkg_pass/gcc-pass1

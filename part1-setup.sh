@@ -1,7 +1,7 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 if test -f $LFS/LfsScripts/pkg-pass/setup-pass; then
   echo "Setup completed."
-  exit 0
+  exit
 fi
 source ./config.config
 export LFS=$LFS_DIR
@@ -14,12 +14,12 @@ dirname "$file" | tr '/' $'\n' | while read part ; do
     # Check for execute permissions
     if ! [[ -x "$path" ]] ; then
         echo "'$path' is blocking access."
-        exit 1
+        exit
     fi
 done
 if ! [[ -r "$file" ]] ; then
     echo "'$file' is not readable."
-    exit 1
+    exit
 fi
 
 
