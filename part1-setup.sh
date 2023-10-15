@@ -3,20 +3,33 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-./config.config
+source ./config.config
 export LFS=$LFS_DIR
 mkdir -v $LFS/sources
 chmod -v a+wt $LFS/sources
 wget https://www.linuxfromscratch.org/lfs/downloads/stable/wget-list-sysv
 wget --input-file=wget-list-sysv --continue --directory-prefix=$LFS/sources
+chown root:root $LFS/sources/*
 wget https://www.linuxfromscratch.org/lfs/downloads/stable/md5sums
 pushd $LFS/sources
  md5sum -c md5sums
 popd
+mkdir -pv $LFS/{etc,var} $LFS/usr/{bin,lib,sbin}
+for i in bin lib sbin; do
+ ln -sv usr/$i $LFS/$i
+done
+case $(uname -m) in
+ x86_64) mkdir -pv $LFS/lib64 ;;
+esac
+mkdir -pv $LFS/tools
 groupadd lfs
 useradd -s /bin/bash -g lfs -m -k /dev/null lfs
 echo lfs | passwd lfs --stdin
 passwd -d lfs
+chown -v lfs $LFS/{usr{,/*},lib,var,etc,bin,sbin,tools}
+case $(uname -m) in
+ x86_64) chown -v lfs $LFS/lib64 ;;
+esac
 su lfs
 cd ~/
 echo "LFS=$LFS_DIR" >>  ~/.bashrc
@@ -27,4 +40,6 @@ echo "if [ ! -L /bin ]; then PATH=/bin:$PATH; fi" >>  ~/.bashrc
 echo "PATH=$LFS/tools/bin:$PATH" >>  ~/.bashrc
 echo "CONFIG_SITE=$LFS/usr/share/config.site" >>  ~/.bashrc
 echo "export LFS LC_ALL LFS_TGT PATH CONFIG_SITE" >>  ~/.bashrc
+source ~/.bash_profile
+mkdir $LFS/pkg_pass
 echo "Finished!"
