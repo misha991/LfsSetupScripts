@@ -40,5 +40,7 @@ cd $SCRIPT_DIR
 mv part2-compile.sh $LFS/LfsScripts
 mv PkgFiles/* $LFS/LfsScripts/pkg_toolchain
 mv config.config $LFS/LfsScripts/
+mv README.md $LFS/LfsScripts/
+mv LICENSE $LFS/LfsScripts/
 rm -r $SCRIPT_DIR
 echo "Finished!"
