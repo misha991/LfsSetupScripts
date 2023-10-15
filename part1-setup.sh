@@ -24,16 +24,9 @@ case $(uname -m) in
  x86_64) mkdir -pv $LFS/lib64 ;;
 esac
 mkdir -pv $LFS/tools
-groupadd lfs
-useradd -s /bin/bash -g lfs -m -k /dev/null lfs
-passwd -d lfs
-chown -v lfs $LFS/{usr{,/*},lib,var,etc,bin,sbin,tools}
-chown -v lfs $0/*
 case $(uname -m) in
  x86_64) chown -v lfs $LFS/lib64 ;;
 esac
-su lfs
-cd ~/
 echo "LFS=$LFS_DIR" >>  ~/.bashrc
 echo "LC_ALL=POSIX" >>  ~/.bashrc
 echo "LFS_TGT=$(uname -m)-lfs-linux-gnu" >>  ~/.bashrc
@@ -45,4 +38,3 @@ echo "export LFS LC_ALL LFS_TGT PATH CONFIG_SITE" >>  ~/.bashrc
 source ~/.bash_profile
 mkdir $LFS/pkg_pass
 echo "Finished!"
-cd $0
