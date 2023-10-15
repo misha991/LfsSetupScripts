@@ -6,10 +6,10 @@ fi
 source ./config.config
 export LFS=$LFS_DIR
 user= ${SUDO_USER:-$USER}
-sudo -u $user test -w $LFS/ || {
-   echo "cannot write the directory $LFS"
-   return 0
-}
+perms = ${ls -ld $LFS}
+if [[ ! "$perms" == *"$user"* ]]; then
+  return 0
+fi
 mkdir -v $LFS/sources
 chmod -v +rwx $LFS/sources
 wget https://www.linuxfromscratch.org/lfs/downloads/stable/wget-list-sysv
