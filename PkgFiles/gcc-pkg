@@ -102,7 +102,7 @@ else
     echo "failed"
     exit 1
 fi
-cd ..
+cd ../
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
  `dirname $($LFS_TGT-gcc -print-libgcc-file-name)`/include/limits.h
   if [ $? -eq 0 ]; then
@@ -112,4 +112,3 @@ else
     exit 1
 fi
 touch $LFS/pkg_pass/gcc-pass1
-cd $0

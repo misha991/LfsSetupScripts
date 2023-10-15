@@ -35,4 +35,3 @@ else
     exit 1
 fi
 touch $LFS/pkg_pass/linux-headers
-cd $0

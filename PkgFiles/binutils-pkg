@@ -41,4 +41,3 @@ else
     exit 1
 fi
 touch $LFS/pkg_pass/binutils-pass1
-cd $0

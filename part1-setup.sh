@@ -1,5 +1,5 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-if test -f $LFS/pkg-pass/setup-pass; then
+if test -f $LFS/LfsScripts/pkg-pass/setup-pass; then
   echo "Setup completed."
   exit 0
 fi
@@ -37,10 +37,7 @@ mkdir $LFS/LfsScripts/pkg_pass
 mkdir $LFS/LfsScripts/pkg_toolchain
 touch $LFS/LfsScripts/pkg_pass/setup-pass
 cd $SCRIPT_DIR
-mv part2-compile.sh $LFS/LfsScripts
 mv PkgFiles/* $LFS/LfsScripts/pkg_toolchain
-mv config.config $LFS/LfsScripts/
-mv README.md $LFS/LfsScripts/
-mv LICENSE $LFS/LfsScripts/
+mv ./* $LFS/LfsScripts
 rm -r $SCRIPT_DIR
 echo "Finished!"
