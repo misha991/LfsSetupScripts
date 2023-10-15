@@ -5,7 +5,7 @@ if test -f $LFS/LfsScripts/pkg-pass/setup-pass; then
 fi
 source ./config.config
 export LFS=$LFS_DIR
-file = $LFS/*
+file = $LFS/
 if ! [[ "$file" == /* ]] ; then
     path=.
 fi
