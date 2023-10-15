@@ -5,7 +5,7 @@ if [ $? -eq 0 ]; then
     echo "succesed"
 else
     echo "failed"
-    exit
+    return 1
 fi
 cd $LFS/LfsScripts/pkg_toolchain/
 source gcc-pkg
@@ -13,7 +13,7 @@ if [ $? -eq 0 ]; then
     echo "succesed"
 else
     echo "failed"
-    exit
+    return 1
 fi
 cd $LFS/LfsScripts/pkg_toolchain/
 source glibc-pkg

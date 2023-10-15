@@ -1,7 +1,7 @@
 echo "installing glibc"
 if test -f $LFS/pkg_pass/glibc; then
   echo "Glibc is installed."
-  exit 0
+  return 0
 fi
 cd $LFS/sources
 case $(uname -m) in
@@ -44,26 +44,26 @@ fi
     echo "succesed"
 else
     echo "failed"
-    exit
+    return 1
 fi
  make $MAKE_FLAGS
   if [ $? -eq 0 ]; then
     echo "succesed"
 else
     echo "failed"
-    exit
+    return 1
 fi
 make DESTDIR=$LFS install
   if [ $? -eq 0 ]; then
     echo "succesed"
 else
     echo "failed"
-    exit
+    return 1
 fi
 sed '/RTLDLIST=/s@/usr@@g' -i $LFS/usr/bin/ldd
  if [ $? -eq 0 ]; then
     echo "succesed"
 else
     echo "failed"
-    exit
+    return 1
 fi
