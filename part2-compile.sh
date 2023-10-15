@@ -1,6 +1,6 @@
 su lfs
 ./config.config
-cd $0/PkgFiles
+cd ./pkg_toolchain
 source binutils-pkg
 if [ $? -eq 0 ]; then
     echo "succesed"

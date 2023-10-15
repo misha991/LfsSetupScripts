@@ -1,8 +1,8 @@
-if [ "$EUID" -ne 0 ]
-  then echo "Please run as root"
-  exit
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+if test -f $LFS/pkg-pass/setup-pass; then
+  echo "Setup completed."
+  exit 0
 fi
-
 source ./config.config
 export LFS=$LFS_DIR
 mkdir -v $LFS/sources
@@ -32,5 +32,11 @@ echo "PATH=$LFS/tools/bin:$PATH" >>  ~/.bashrc
 echo "CONFIG_SITE=$LFS/usr/share/config.site" >>  ~/.bashrc
 echo "export LFS LC_ALL LFS_TGT PATH CONFIG_SITE" >>  ~/.bashrc
 source ~/.bash_profile
-mkdir $LFS/pkg_pass
+mkdir $LFS/LfsScripts
+mkdir $LFS/LfsScripts/pkg_pass
+mkdir $LFS/LfsScripts/pkg_toolchain
+touch $LFS/LfsScripts/pkg_pass/setup-pass
+cd $SCRIPT_DIR
+mv part2-compile.sh $LFS/LfsScripts
+mv PkgFiles/* $LFS/LfsScripts/pkg_toolchain
 echo "Finished!"
