@@ -1,6 +1,6 @@
 source config.config
-if test -f $LFS/LfsSetupScripts/pkg_pass/setup-pass; then
-  echo "Binutils is installed."
+if !test -f $LFS/LfsSetupScripts/pkg_pass/setup-pass; then
+  echo "setup is not finished!."
   exit 0
 fi
 pkg_dir=$LFS/LfsSetupScripts
