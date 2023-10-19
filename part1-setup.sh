@@ -5,8 +5,6 @@ if test -f $LFS/LfsScripts/pkg-pass/setup-pass; then
 fi
 source ./config.config
 export LFS=$LFS_DIR
-user= ${SUDO_USER:-$USER}
-
 mkdir -v $LFS/sources
 chmod -v +rwx $LFS/sources
 wget https://www.linuxfromscratch.org/lfs/downloads/stable/wget-list-sysv
@@ -34,12 +32,7 @@ echo "PATH=$LFS/tools/bin:$PATH" >>  ~/.bashrc
 echo "CONFIG_SITE=$LFS/usr/share/config.site" >>  ~/.bashrc
 echo "export LFS LC_ALL LFS_TGT PATH CONFIG_SITE" >>  ~/.bashrc
 source ~/.bash_profile
-mkdir $LFS/LfsScripts
-mkdir $LFS/LfsScripts/pkg_pass
-mkdir $LFS/LfsScripts/pkg_toolchain
-touch $LFS/LfsScripts/pkg_pass/setup-pass
+mkdir $LFS/LfsSetupScripts/pkg_pass
+touch $LFS/LfsSetupScripts/pkg_pass/setup-pass
 cd $SCRIPT_DIR
-mv PkgFiles/* $LFS/LfsScripts/pkg_toolchain
-mv ./* $LFS/LfsScripts
-rm -r $SCRIPT_DIR
 echo "Finished!"

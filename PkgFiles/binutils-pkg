@@ -1,5 +1,5 @@
 echo "installing binutils-pass1"
-if test -f $LFS/pkg_pass/binutils-pass1; then
+if test -f $LFS/LfsSetupScripts/pkg_pass/binutils-pass1; then
   echo "Binutils is installed."
   return 0
 fi
