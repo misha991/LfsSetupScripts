@@ -10,6 +10,7 @@ pkg_dir=$LFS/LfsSetupScripts/PkgFiles
 for entry in "$pkg_dir"/*
 do
   FileName = $(basename $entry .sh)
+  echo $FileName
   echo $entry
   source pkgCompile.sh $FileName "$FileName-pass"
   if [ $? -eq 0 ]; then
