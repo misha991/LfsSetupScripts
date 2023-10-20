@@ -1,4 +1,11 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+source versioncheck.sh
+if [ $? -eq 0 ]; then
+    echo "version check passed"
+else
+    echo "Invalid system!"
+    return 1
+fi
 if test -f $LFS/LfsScripts/pkg-pass/setup-pass; then
   echo "Setup completed."
   return 0

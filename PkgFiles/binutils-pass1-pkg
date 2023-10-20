@@ -3,7 +3,7 @@ name = binutils-2.41
 export file
 preInstall{}
 configure{
-$1/configure --prefix=$LFS/tools \
+../configure --prefix=$LFS/tools \
  --with-sysroot=$LFS \
  --target=$LFS_TGT \
  --disable-nls \

@@ -33,16 +33,20 @@ else
 fi
 make $MAKE_FLAGS
  if [ $? -eq 0 ]; then
-    echo "succesed"
+    echo "Builded $name successed" >> $LFS/LfsSetupScripts/log
+    echo "Builded $name successed"
 else
-    echo "failed"
+    echo "Failed to build $name" >> $LFS/LfsSetupScripts/log
+    echo "Failed to build $name"
     return 1
 fi
 make install
  if [ $? -eq 0 ]; then
-    echo "succesed"
+    echo "Installed $name successed" >> $LFS/LfsSetupScripts/log
+    echo "Installed $name successed"
 else
-    echo "failed"
+    echo "Failed to install $name" >> $LFS/LfsSetupScripts/log
+    echo "Failed to install $name"
     return 1
 fi
-touch $LFS/pkg_pass/binutils-pass1
+touch $LFS/LfsSetupScripts/pkg_pass/$2
