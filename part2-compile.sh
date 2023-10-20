@@ -1,7 +1,7 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 source config.config
 if test -f $LFS/LfsSetupScripts/pkg_pass/setup-pass; then
-  echo "setup is not finished!."
+  echo "."
   else
   echo "setup is not finished!."
   return 1
@@ -9,7 +9,8 @@ fi
 pkg_dir=$LFS/LfsSetupScripts/PkgFiles
 for entry in "$pkg_dir"/*
 do
-  source pkgCompile.sh "$entry-pkg" $entry
+  FileName = $(basename $entry .sh)
+  source pkgCompile.sh $FileName $entry
   if [ $? -eq 0 ]; then
     echo "succesed"
 else
