@@ -15,7 +15,6 @@ do
 else
     echo "exitted with code $?" >> $LFS/LfsSetupScripts/log
     echo "error occured. see logs for more info"
-    return 1
 fi
   
 done
