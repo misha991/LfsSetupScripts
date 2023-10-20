@@ -49,4 +49,4 @@ else
     echo "Failed to install $name"
     return 1
 fi
-touch $LFS/LfsSetupScripts/pkg_pass/$2
+touch $LFS/LfsSetupScript/pkg_pass/$2
