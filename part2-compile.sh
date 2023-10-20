@@ -1,10 +1,9 @@
 source config.config
 if test -f $LFS/LfsSetupScripts/pkg_pass/setup-pass; then
   echo "setup is not finished!."
-  return 0
   else
   echo "setup is not finished!."
-  return 0
+  return 1
 fi
 pkg_dir=$LFS/LfsSetupScripts/PkgFiles
 for entry in "$pkg_dir"/*
