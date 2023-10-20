@@ -9,8 +9,7 @@ fi
 pkg_dir=$LFS/LfsSetupScripts/PkgFiles
 for entry in "$pkg_dir"/*
 do
-  echo " setting up $entry"
-  source $entry 
+  source pkgCompile.sh "$entry-pkg" $entry
   if [ $? -eq 0 ]; then
     echo "succesed"
 else

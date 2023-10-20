@@ -15,7 +15,17 @@ export LFS=$LFS_DIR
 mkdir -v $LFS/sources
 chmod -v +rwx $LFS/sources
 wget https://www.linuxfromscratch.org/lfs/downloads/stable/wget-list-sysv
+if [ $? -eq 0 ]; then
+else
+     echo "Failed to download sources list"
+    return 1
+fi
 wget --input-file=wget-list-sysv --continue --directory-prefix=$LFS/sources
+if [ $? -eq 0 ]; then
+else
+     echo "Failed to download sources"
+    return 1
+fi
 cd $LFS/sources
 wget https://www.linuxfromscratch.org/lfs/downloads/stable/md5sums
 pushd $LFS/sources
