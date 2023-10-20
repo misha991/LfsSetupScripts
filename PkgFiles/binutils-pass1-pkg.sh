@@ -1,6 +1,8 @@
+_export{
 file = binutils-2.41.tar.xz
 name = binutils-2.41
 export file name
+}
 preInstall{}
 configure{
 ../configure --prefix=$LFS/tools \

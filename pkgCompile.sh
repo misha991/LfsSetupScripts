@@ -5,6 +5,7 @@ echo "$1 is installed."
   exit 0
 fi
 source $LFS/LfsSetupScripts/PkgFiles/$2
+_export
 echo "setting up $name" >> $LFS/LfsSetupScripts/log
 echo "setting up $name"
 cd $LFS/sources
