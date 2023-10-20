@@ -1,7 +1,7 @@
 _export{
 export file = binutils-2.41.tar.xz
 export name = binutils-2.41
-echo "ecport"
+echo "export"
 }
 preInstall{}
 configure{
