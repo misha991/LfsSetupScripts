@@ -1,3 +1,4 @@
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 source config.config
 if test -f $LFS/LfsSetupScripts/pkg_pass/setup-pass; then
   echo "setup is not finished!."
@@ -18,3 +19,4 @@ else
 fi
   
 done
+cd $SCRIPT_DIR

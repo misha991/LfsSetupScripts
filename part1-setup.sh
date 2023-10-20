@@ -16,6 +16,7 @@ mkdir -v $LFS/sources
 chmod -v +rwx $LFS/sources
 wget https://www.linuxfromscratch.org/lfs/downloads/stable/wget-list-sysv
 if [ $? -eq 0 ]; then
+echo ""
 else
      echo "Failed to download sources list"
     return 1
