@@ -23,6 +23,7 @@ else
 fi
 wget --input-file=wget-list-sysv --continue --directory-prefix=$LFS/sources
 if [ $? -eq 0 ]; then
+echo ""
 else
      echo "Failed to download sources"
     return 1
