@@ -8,7 +8,7 @@ source $LFS/LfsSetupScripts/PkgFiles/$2
 echo "setting up $name" >> $LFS/LfsSetupScripts/log
 echo "setting up $name"
 cd $LFS/sources
-tar -xf $file
+tar -f $file
 if [ $? -eq 0 ]; then
     echo "extracted $file" >> $LFS/LfsSetupScripts/log
     echo "extracted $file"
