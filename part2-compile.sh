@@ -9,10 +9,8 @@ fi
 pkg_dir=$LFS/LfsSetupScripts/PkgFiles
 for entry in "$pkg_dir"/*
 do
-  export FileName = $(basename $entry .sh)
-  echo $FileName
   echo $entry
-  source pkgCompile.sh $FileName "$FileName-pass"
+  source pkgCompile.sh $entry "$entry-pass"
   if [ $? -eq 0 ]; then
     echo "succesed"
 else
