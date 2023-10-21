@@ -13,7 +13,7 @@ do
   name=$(basename $entry) 
   filename=${name#".sh"}
   echo $filename
-  source pkgCompile.sh $entry "$filename-pass"
+  source pkgCompile.sh $name "$filename-pass"
   if [ $? -eq 0 ]; then
     echo "succesed"
 else
