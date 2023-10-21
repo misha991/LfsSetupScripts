@@ -15,6 +15,7 @@ do
     echo "succesed"
 else
     echo "exitted with code $?" >> $LFS/LfsSetupScripts/log
+     echo "exitted with code $?"
     echo "error occured. see logs for more info"
 fi
   
