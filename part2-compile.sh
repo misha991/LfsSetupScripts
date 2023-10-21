@@ -10,12 +10,15 @@ pkg_dir=$LFS/LfsSetupScripts/PkgFiles
 for entry in "$pkg_dir"/*
 do
   echo $entry
+  filename=$(basename $entry) 
+  echo $filename
   source pkgCompile.sh $entry "$entry-pass"
   if [ $? -eq 0 ]; then
     echo "succesed"
 else
-    echo "exitted with code $?" >> $LFS/LfsSetupScripts/log
-     echo "exitted with code $?"
+    code=$?
+    echo "exitted with code $code" >> $LFS/LfsSetupScripts/log
+    echo "exitted with code $code"
     echo "error occured. see logs for more info"
 fi
   
