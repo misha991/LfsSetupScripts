@@ -10,9 +10,10 @@ pkg_dir=$LFS/LfsSetupScripts/PkgFiles
 for entry in "$pkg_dir"/*
 do
   echo $entry
-  filename=$(basename $entry) 
+  name=$(basename $entry) 
+  filename=${name#".sh"}
   echo $filename
-  source pkgCompile.sh $entry "$entry-pass"
+  source pkgCompile.sh $entry "$filename-pass"
   if [ $? -eq 0 ]; then
     echo "succesed"
 else
